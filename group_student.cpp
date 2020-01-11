@@ -15,9 +15,7 @@ void StudentGroup::addStudent(Student* student)
 			student->addGroupNumber(this->groupNumber);
 		}
 	}
-	else {
-		cout << "!!!Errot." << endl;//more 20
-	}
+	else cout << "!!!Errot." << endl;//more 20
 }
 void StudentGroup::deleteStudent(Student* student)
 {
@@ -26,8 +24,7 @@ void StudentGroup::deleteStudent(Student* student)
 		student->deleteGroupNumber(this->groupNumber);
 		listOfStudents.erase(position);
 	}
-	else
-		cout << "!!!Error." << endl;//no student
+	else cout << "!!!Error." << endl;//no student
 }
 
 int StudentGroup::getGroupNumber()

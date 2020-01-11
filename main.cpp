@@ -59,10 +59,10 @@ int main(int argc, const char * argv[]) {
 	}
 	for (int i = 0; i < 19; i++)
 	{
-		int indGroup = rand() % 5;
-		int indStud = rand() % 19;
+		int tempGroupInd = rand() % 5;
+		int tempStudInd = rand() % 19;
 
-		AllGroupsList[indGroup]->addStudent(AllStudentsList[indStud]);
+		AllGroupsList[tempGroupInd]->addStudent(AllStudentsList[tempStudInd]);
 	}
 	cout << "Groups: " << endl;
 	for (int i = 0; i < 5; i++)
@@ -94,16 +94,11 @@ int main(int argc, const char * argv[]) {
 		cout  << "Group number to check(to finish enter '0'): " << endl;
 		int inputGroup;
 		cin >> inputGroup;
-		if (inputGroup == 0)
-		{
-			break;
-		}
+		if (inputGroup == 0) break;
 		int tempGroupInd = 0;
 		while (tempGroupInd < 5)
 		{
-			if (AllGroupsList[tempGroupInd]->getGroupNumber() == inputGroup) {
-				break;
-			}
+			if (AllGroupsList[tempGroupInd]->getGroupNumber() == inputGroup) break;
 			tempGroupInd++;
 		}
 		if (tempGroupInd == 5)
@@ -128,12 +123,8 @@ int main(int argc, const char * argv[]) {
 		string strNameInput;
 		cin.ignore();
 		getline(cin, strNameInput);
-		if (strNameInput == "0")
-		{
-			continue;
-		}
+		if (strNameInput == "0") continue;
 		cout << strNameInput << endl;
-
 
 		for (int i = 0; i < 19; i++)
 		{
