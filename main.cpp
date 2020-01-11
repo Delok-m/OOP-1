@@ -5,6 +5,7 @@
 #include <vector>
 #include <locale>
 #include <ctime>
+#include<iomanip>
 #include "student.h"
 #include "group_student.h"
 #include "windows.h"
@@ -15,8 +16,6 @@ int main(int argc, const char * argv[]) {
 	setlocale(LC_ALL, "Russian");
 	srand(time(NULL));
 
-	Student* AllStudentsList[19];
-	StudentGroup* AllGroupsList[5];
 	string names[19] = { 
 		"Рашета Полина Захаровна",
 		"Салтыкова Варвара Захаровна",
@@ -39,6 +38,10 @@ int main(int argc, const char * argv[]) {
 		"Яковенко Давид Денисович"
 	};
 	int groups[5] = { 7091,7411,7401,7371,7311 };
+
+	Student* AllStudentsList[19];
+	StudentGroup* AllGroupsList[5];
+
 	for (int i = 0; i < 19; i++)
 	{
 		Student* student = new Student(names[i]);
@@ -49,7 +52,7 @@ int main(int argc, const char * argv[]) {
 		StudentGroup* studentGroup = new StudentGroup(groups[i]);
 		AllGroupsList[i] = studentGroup;
 	}
-	cout << "Students: " << endl;
+	cout << "Names: " << endl;
 	for (int i = 0; i < 19; i++)
 	{
 		cout << i + 1 << ". " << AllStudentsList[i]->getName() << endl;
@@ -61,16 +64,15 @@ int main(int argc, const char * argv[]) {
 
 		AllGroupsList[indGroup]->addStudent(AllStudentsList[indStud]);
 	}
-
-	cout << "Groups: ";
+	cout << "Groups: " << endl;
 	for (int i = 0; i < 5; i++)
 	{
-		cout << AllGroupsList[i]->getGroupNumber() << "  ";
+		cout << i + 1 << ". " << AllGroupsList[i]->getGroupNumber() << endl;
 	}
 
-	filebuf fb;
-	fb.open("out.txt", ios::out);
-	ostream out(&fb);
+	filebuf of;
+	of.open("out.txt", ios::out);
+	ostream out(&of);
 	for (int i = 0; i < 5; i++)
 	{
 		vector<Student*> tempVector = AllGroupsList[i]->getListOfStudentsSortedByMarks();
@@ -79,18 +81,17 @@ int main(int argc, const char * argv[]) {
 			out << "No students in group" << AllGroupsList[i]->getGroupNumber();
 		}
 		else {
-			out << "Students from the group " << AllGroupsList[i]->getGroupNumber() << ":" << endl;
+			out << "Group " << AllGroupsList[i]->getGroupNumber() << ":" << endl;
 			for (int i = 0; i < tempVector.size(); i++)
 			{
-				out << i + 1 << ". " << tempVector[i]->getName() << " MinMark: " << tempVector[i]->getMinMark() << endl;
+				out << i + 1 << ". " << setw(32) << left << tempVector[i]->getName() << " MinMark: " << tempVector[i]->getMinMark() << endl;
 			}
 		}
 	}
-	fb.close();
-
+	of.close();
 
 	while (true) {
-		cout << endl << "Group number(To finish, enter '0'): " << endl;
+		cout  << "Group number to check(to finish enter '0'): " << endl;
 		int inputGroup;
 		cin >> inputGroup;
 		if (inputGroup == 0)
@@ -107,20 +108,20 @@ int main(int argc, const char * argv[]) {
 		}
 		if (tempGroupInd == 5)
 		{
-			cout << "Error.";
+			cout << "!!!Error.";//no group
 			continue;
 		}
 		else
 		{
-			vector<Student*> tempStudents = AllGroupsList[tempGroupInd]->getListOfStudents();
+			vector<Student*> tempStudents = AllGroupsList[tempGroupInd]->getListOfStudentsSortedByMarks();
 			if (tempStudents.empty())
 			{
-				cout << "No students in this group" << endl;
+				cout << endl << "!!!No students in this group" << endl;
 				continue;
 			}
 			for (int i = 0; i < tempStudents.size(); i++)
 			{
-				cout << i + 1 << "." << tempStudents[i]->getName() << endl;
+				cout << i + 1 << ". " << setw(30) << left << tempStudents[i]->getName() << " MinMark: " << tempStudents[i]->getMinMark() << endl;
 			}
 		}
 		cout << "Name of the student to remove from the group('0' to return): " << endl;
@@ -144,7 +145,7 @@ int main(int argc, const char * argv[]) {
 			}
 			if (i == 18)
 			{
-				cout << "Error." << endl;;
+				cout << "!!!Error." << endl;//no name
 			}
 		}
 	}

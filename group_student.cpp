@@ -16,7 +16,7 @@ void StudentGroup::addStudent(Student* student)
 		}
 	}
 	else {
-		cout << "Can't be more 20 students in a group" << endl;
+		cout << "!!!Errot." << endl;//more 20
 	}
 }
 void StudentGroup::deleteStudent(Student* student)
@@ -27,7 +27,7 @@ void StudentGroup::deleteStudent(Student* student)
 		listOfStudents.erase(position);
 	}
 	else
-		cout << "Error." << endl;
+		cout << "!!!Error." << endl;//no student
 }
 
 int StudentGroup::getGroupNumber()
@@ -58,7 +58,7 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByName()
 	vector<Student*> tempVector = listOfStudents;
 	if (listOfStudents.empty())
 	{
-		cout << "No students in group " << this->groupNumber  << endl;
+		cout << endl <<"!!!No students in group " << this->groupNumber  << endl;
 		return tempVector;
 	}
 	else {
@@ -67,7 +67,6 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByName()
 			return a->getName()[0] < b->getName()[0];
 		});
 	}
-
 	return tempVector;
 }
 vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
@@ -75,7 +74,7 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
 	vector<Student*> tempVector = listOfStudents;
 	if (listOfStudents.empty())
 	{
-		cout << "No students in group " << this->groupNumber  << endl;
+		cout << "!!!No students in group " << this->groupNumber  << endl;
 		return tempVector;
 	}
 	else {
@@ -84,6 +83,5 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
 			return a->getMinMark() > b->getMinMark();
 		});
 	}
-
 	return tempVector;
 }
