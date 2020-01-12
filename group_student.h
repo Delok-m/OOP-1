@@ -4,17 +4,17 @@
 #include<stdio.h>
 #include<algorithm>
 #include<vector>
-#include"Student.h"
+#include"student.h"
 
 using namespace std;
 
-class StudentGroup
+class GroupStudent
 {
 private:
 	int groupNumber;
 	vector<Student*> listOfStudents;
 public:
-	StudentGroup(int number);
+	GroupStudent(int number);
 	void addStudent(Student* student);
 	void deleteStudent(Student* student);
 	int getGroupNumber();

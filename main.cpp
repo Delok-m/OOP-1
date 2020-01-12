@@ -40,7 +40,7 @@ int main(int argc, const char * argv[]) {
 	int groups[5] = { 7091,7411,7401,7371,7311 };
 
 	Student* AllStudentsList[19];
-	StudentGroup* AllGroupsList[5];
+	GroupStudent* AllGroupsList[5];
 
 	for (int i = 0; i < 19; i++)
 	{
@@ -49,7 +49,7 @@ int main(int argc, const char * argv[]) {
 	}
 	for (int i = 0; i < 5; i++)
 	{
-		StudentGroup* studentGroup = new StudentGroup(groups[i]);
+		GroupStudent* studentGroup = new GroupStudent(groups[i]);
 		AllGroupsList[i] = studentGroup;
 	}
 	cout << "Names: " << endl;

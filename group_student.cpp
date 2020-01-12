@@ -1,10 +1,10 @@
 #include"group_student.h"
 
-StudentGroup::StudentGroup(int number)
+GroupStudent::GroupStudent(int number)
 {
 	this->groupNumber = number;
 }
-void StudentGroup::addStudent(Student* student)
+void GroupStudent::addStudent(Student* student)
 {
 	if (listOfStudents.size() < 20) {
 		if (find(listOfStudents.begin(), listOfStudents.end(), student) != listOfStudents.end()) {
@@ -16,7 +16,7 @@ void StudentGroup::addStudent(Student* student)
 	}
 	else cout << "!!!Errot." << endl;//more 20
 }
-void StudentGroup::deleteStudent(Student* student)
+void GroupStudent::deleteStudent(Student* student)
 {
 	vector<Student*>::iterator position = find(listOfStudents.begin(), listOfStudents.end(), student);
 	if (position != listOfStudents.end()) {
@@ -25,11 +25,11 @@ void StudentGroup::deleteStudent(Student* student)
 	}
 	else cout << "!!!Error." << endl;//no student
 }
-int StudentGroup::getGroupNumber()
+int GroupStudent::getGroupNumber()
 {
 	return this->groupNumber;
 }
-Student* StudentGroup::getStudentByName(string& name)
+Student* GroupStudent::getStudentByName(string& name)
 {
 	int i = 0;
 	for (i = 0; listOfStudents.size(); i++)
@@ -40,11 +40,11 @@ Student* StudentGroup::getStudentByName(string& name)
 	}
 	return nullptr;
 }
-vector<Student*> StudentGroup::getListOfStudents()
+vector<Student*> GroupStudent::getListOfStudents()
 {
 	return listOfStudents;
 }
-vector<Student*> StudentGroup::getListOfStudentsSortedByName()
+vector<Student*> GroupStudent::getListOfStudentsSortedByName()
 {
 	vector<Student*> tempVector = listOfStudents;
 	if (listOfStudents.empty())
@@ -60,7 +60,7 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByName()
 	}
 	return tempVector;
 }
-vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
+vector<Student*> GroupStudent::getListOfStudentsSortedByMarks()
 {
 	vector<Student*> tempVector = listOfStudents;
 	if (listOfStudents.empty())
@@ -76,7 +76,7 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
 	}
 	return tempVector;
 }
-void StudentGroup::setGroupNumber(int groupNumber)
+void GroupStudent::setGroupNumber(int groupNumber)
 {
 	this->groupNumber = groupNumber;
 }
