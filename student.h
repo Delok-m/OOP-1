@@ -1,9 +1,9 @@
 #ifndef student_h
 #define student_h
 
-#include <stdio.h>
-#include <vector>
-#include <iostream>
+#include<stdio.h>
+#include<vector>
+#include<iostream>
 
 using namespace std;
 
@@ -14,15 +14,14 @@ private:
 	int min_mark;
 	vector<int> group_numbers;
 public:
-
+	Student(string name);
 	void addGroupNumber(int groupNumber);
 	void deleteGroupNumber(int groupNumber);
 	string getName();
+	int getMinMark();
+	int getGroupCount();
+	const vector<int>& getGroupNumbers();
 	void setName(string name);
 	void setMinMark(int minMark);
-	int getGroupCount();
-	int getMinMark();
-	const vector<int>& getGroupNumbers();
-	Student(string name);
 };
 #endif 

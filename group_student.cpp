@@ -1,10 +1,9 @@
-#include "group_student.h"
+#include"group_student.h"
 
 StudentGroup::StudentGroup(int number)
 {
 	this->groupNumber = number;
 }
-
 void StudentGroup::addStudent(Student* student)
 {
 	if (listOfStudents.size() < 20) {
@@ -26,14 +25,9 @@ void StudentGroup::deleteStudent(Student* student)
 	}
 	else cout << "!!!Error." << endl;//no student
 }
-
 int StudentGroup::getGroupNumber()
 {
 	return this->groupNumber;
-}
-void StudentGroup::setGroupNumber(int groupNumber)
-{
-	this->groupNumber = groupNumber;
 }
 Student* StudentGroup::getStudentByName(string& name)
 {
@@ -81,4 +75,8 @@ vector<Student*> StudentGroup::getListOfStudentsSortedByMarks()
 		});
 	}
 	return tempVector;
+}
+void StudentGroup::setGroupNumber(int groupNumber)
+{
+	this->groupNumber = groupNumber;
 }

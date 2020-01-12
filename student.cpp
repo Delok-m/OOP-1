@@ -1,11 +1,10 @@
-#include "student.h"
+#include"student.h"
 
 Student::Student(string name)
 {
 	this->name = name;
-	this->min_mark = rand() % (5 - 2 + 1) + 2;
+	this->min_mark = 2 + rand() % 4;
 }
-
 void Student::addGroupNumber(int groupNumber)
 {
 	group_numbers.push_back(groupNumber);
@@ -17,7 +16,6 @@ void Student::deleteGroupNumber(int groupNumber)
 		group_numbers.erase(position);
 	}
 }
-
 string Student::getName()
 {
 	return this->name;
@@ -34,7 +32,6 @@ const vector<int>& Student::getGroupNumbers()
 {
 	return this->group_numbers;
 }
-
 void Student::setName(string name)
 {
 	this->name = name;

@@ -1,14 +1,14 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <sstream>
-#include <vector>
-#include <locale>
-#include <ctime>
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<sstream>
+#include<vector>
+#include<locale>
+#include<ctime>
 #include<iomanip>
-#include "student.h"
-#include "group_student.h"
-#include "windows.h"
+#include"student.h"
+#include"group_student.h"
+#include"windows.h"
 
 using namespace std;
 
@@ -79,12 +79,15 @@ int main(int argc, const char * argv[]) {
 		if (tempVector.empty())
 		{
 			out << "No students in group" << AllGroupsList[i]->getGroupNumber();
+			cout << "No students in group" << AllGroupsList[i]->getGroupNumber();
 		}
 		else {
 			out << "Group " << AllGroupsList[i]->getGroupNumber() << ":" << endl;
+			cout << "Group " << AllGroupsList[i]->getGroupNumber() << ":" << endl;
 			for (int i = 0; i < tempVector.size(); i++)
 			{
 				out << i + 1 << ". " << setw(32) << left << tempVector[i]->getName() << " MinMark: " << tempVector[i]->getMinMark() << endl;
+				cout << i + 1 << ". " << setw(32) << left << tempVector[i]->getName() << " MinMark: " << tempVector[i]->getMinMark() << endl;
 			}
 		}
 	}
@@ -103,7 +106,7 @@ int main(int argc, const char * argv[]) {
 		}
 		if (tempGroupInd == 5)
 		{
-			cout << "!!!Error.";//no group
+			cout << "!!!Error." << endl;//no group
 			continue;
 		}
 		else
